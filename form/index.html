@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" /><!-- Optimistically rendering in Chrome Frame in IE. -->
+<title>HTML5 Form Demo</title>
+<style type="text/css">
+  
+   @font-face
+   {
+            font-family: Zoinks;
+            src: url('fonts/Zoinks.woff');
+   }
+
+   @font-face
+   {
+            font-family: GrimshawHand;
+            src: url('fonts/GrimshawHand.woff');
+   }
+   label {font: 15pt Zoinks, sans-serif;}
+   h1 {font: 30pt Zoinks, sans-serif;text-align: center}
+ 
+
+*:focus{outline:none; /* Prevents blue border in Webkit */}
+form {width: 770px;margin-left: 20%;}
+
+textarea {min-height:200px;}
+input,textarea {
+
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color:#fff;
+	border:1px solid #ccc;
+	font-size:14px;
+	width:300px;
+	min-height:30px;
+	display:block;
+	margin-bottom:16px;
+	margin-top:8px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+			
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+input:focus, textarea:focus {
+      -webkit-box-shadow:0 0 25px #ccc;
+	-moz-box-shadow:0 0 25px #ccc;
+	box-shadow:0 0 25px #ccc;
+      -webkit-transform: scale(1.05);
+      -moz-transform: scale(1.05);
+      transform: scale(1.05);
+}
+
+input:required, textarea:required { background: url(orange.png) no-repeat 280px 7px;}
+input:valid, textarea:valid { background: url(valid.png) no-repeat 280px 7px;}
+input:focus:invalid, textarea:focus:invalid { background: url(invalid.png) no-repeat 280px 7px;}
+
+input[type=submit] {
+	padding:10px;
+	background:#69c;
+      color: #fff;
+	opacity:1.0;
+}
+</style>
+</head>
+<body>
+
+<h1>HTML5 Form</h1>
+
+<form action="form.php" method="post">
+
+<label for="name">Name:</label>
+<input type="text" name="name" id="name" placeholder="Enter a name" required />
+
+<label for="email">Email:</label>
+<input type="email" name="email" id="email" placeholder="email@thinkphp.ro" required />
+
+<label for="website">Website:</label>
+<input type="website" name="website" id="website" placeholder="http://thinkphp.ro" required />
+
+<label for="number">Number:</label>
+<input type="number" name="number" id="number" placeholder="enter a number" required />
+
+<label for="message">Message:</label>
+<textarea id="message" name="message" required></textarea>
+
+<input type="submit" value="send form">
+</form>
+
+
+</body>
+</html>
+
