@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title></title>
+<style type="text/css">
+a {
+    text-decoration: none;
+    color: hsl(206, 80%, 50%);
+}
+
+.roll {
+    display: inline-block;
+    overflow: hidden;
+
+    vertical-align: top;
+
+    -webkit-perspective: 400px;
+       -moz-perspective: 400px;
+
+    -webkit-perspective-origin: 50% 50%;
+       -moz-perspective-origin: 50% 50%;
+}
+.roll span {
+    display: block;
+    position: relative;
+    padding: 0 2px;
+
+    -webkit-transition: all 400ms ease;
+       -moz-transition: all 400ms ease;
+    
+    -webkit-transform-origin: 50% 0%;
+       -moz-transform-origin: 50% 0%;
+    
+    -webkit-transform-style: preserve-3d;
+       -moz-transform-style: preserve-3d;
+}
+.roll:hover span {
+        background: #111;
+        -webkit-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+        -moz-transform: translate3d( 0px, 0px, -30px ) rotateX( 90deg );
+}
+
+.roll span:after {
+    content: attr(data-title);
+
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0 2px;
+
+    color: hsl(206, 80%, 50%);
+    background: #fff;
+
+    -webkit-transform-origin: 50% 0%;
+       -moz-transform-origin: 50% 0%;
+
+    -webkit-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+       -moz-transform: translate3d( 0px, 105%, 0px ) rotateX( -90deg );
+}
+
+
+
+</style>
+</head>
+<body>
+<h1><a href="#">MooTools a compact JavaScript Framework</a></h1>
+<div><a href="#">MooTools</a> is a compact, modular, Object-Oriented <a href="#">JavaScript</a> framework designed for the intermediate to advanced JavaScript developer. It allows you to write powerful, flexible, and cross-browser code with its elegant, well documented, and coherent API.</div>
+
+<script type="text/javascript">
+
+var supports3DTransform = document.body.style['webkitPerspective'] !== 'undefined' || document.body.style['MozPerspective'] !== 'undefined'
+
+function roll( selector ) {
+
+       if( supports3DTransform ) {
+  
+           var nodes = document.querySelectorAll( selector );
+
+           for(var i = 0, n = nodes.length; i < n; i++) {
+
+              var node = nodes[i]
+ 
+              if(!node.className || !node.className.match(/roll/g)) {
+                  node.className = ' roll'
+                  node.innerHTML = '<span data-title="'+ node.innerHTML +'">'+ node.innerHTML +'</span>' 
+              }
+           }
+       }
+}
+
+roll('a')
+
+</script>
+</body>
+</html>
+
