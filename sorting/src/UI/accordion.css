@@ -1,0 +1,95 @@
+#accordion .ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+#accordion .ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+#accordion .ui-helper-clearfix { display: inline-block; }
+#accordion * html .ui-helper-clearfix { height:1%; }
+#accordion .ui-helper-clearfix { display:block; }
+#accordion .ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+#accordion .ui-widget { font-family: Arial,sans-serif; font-size: 1.1em; }
+#accordion section, #accordion .pointer, #accordion h1, #accordion p {
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+#accordion {
+  margin-bottom:30px;
+  width: 550px
+}
+#accordion h1 {
+  line-height:1.1;
+  font-size:20px;
+  margin:0;
+  padding: 10px 10px 10px 30px;
+}
+#accordion h1 a {
+  color:black;
+}
+#accordion section {
+  overflow:hidden;
+  height:220px;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+#accordion p {
+  padding:0 10px;
+  color:black;
+}
+#accordion section.ac_hidden p:not(.pointer) {
+  color:#fff;
+}
+
+#accordion section.ac_hidden {
+       height:44px;
+       font-weight: normal; 
+       color: #4F4F4F; 
+}
+#accordion section:not(.ac_hidden) h1 {
+	outline: none;
+	color: #1c4257; 
+      border: 1px solid #7096ab;
+	background: -moz-linear-gradient(top, #b9e0f5 0%, #92bdd6 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b9e0f5), color-stop(100%,#92bdd6)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #b9e0f5 0%,#92bdd6 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #b9e0f5 0%,#92bdd6 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #b9e0f5 0%,#92bdd6 100%); /* IE10+ */
+	background: linear-gradient(top, #b9e0f5 0%,#92bdd6 100%); /* W3C */
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+
+}
+
+#accordion section h1{
+
+            border: 1px solid #B6B6B6; 
+            font-weight: normal; 
+            color: #4F4F4F; 
+		background: -moz-linear-gradient(top, #ededed 0%, #c4c4c4 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#c4c4c4)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #ededed 0%,#c4c4c4 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #ededed 0%,#c4c4c4 100%); /* Opera11.10+ */
+		background: -ms-linear-gradient(top, #ededed 0%,#c4c4c4 100%); /* IE10+ */
+		background: linear-gradient(top, #ededed 0%,#c4c4c4 100%); /* W3C */
+            -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+       	-moz-box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+      	box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;          
+}
+
+
+#accordion section:not(.ac_hidden) .pointer {
+  display:block;
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -o-transform:rotate(90deg);
+  transform:rotate(90deg);
+  padding:0;
+}
+
+#accordion .pointer {
+  padding:0;
+  margin:10px 0 0 6px;
+  line-height:20px;
+  width:13px;
+  position:absolute;
+}
+#accordion h1 a {text-decoration: none}

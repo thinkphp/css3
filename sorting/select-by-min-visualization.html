@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>Select By Min Sort Visualization</title>
+<style type="text/css">
+#out {
+     font-weight: bold
+}
+#logger{position:absolute;left: 30.1%;top:30%; float: left;padding: 0.5em 0em 0.2em;margin-left: 10px;width: 295px;height: 80px;border: 1px solid #d6d6d6;border-left-color: #e4e4e4;border-top-color: #e4e4e4;margin-top: 10px;opacity:0;font-size: 25px;font-weight: bold;text-align: center;z-index:3;background-color: lightyellow}
+.minimal {
+  background: #e3e3e3;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  box-shadow: inset 0 0 1px 1px #f6f6f6;
+  color: #333;
+  font: bold 12px/1 "helvetica neue", helvetica, arial, sans-serif;
+  padding: 10px;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  width: 150px; text-decoration: none;}
+
+  .minimal:hover {
+    background: #d9d9d9;
+    -webkit-box-shadow: inset 0 0 1px 1px #eaeaea;
+    box-shadow: inset 0 0 1px 1px #eaeaea;
+    color: #222;
+    cursor: pointer; }
+
+ .minimal:active {
+    background: #d0d0d0;
+    -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
+    box-shadow: inset 0 0 1px 1px #e3e3e3;
+    color: #000; }
+
+#padx {
+ position: relative;
+ margin-top: 100px
+}
+
+#padx .box {
+  position: absolute;
+  border: 1px solid #ccc;
+  width: 100px;   
+  height: 100px;
+  float: left;
+  text-align: center;
+  line-height: 90px;
+  vertical-align: middle;
+  -moz-border-radius: 25px;
+  border-radius: 55px;
+  background-color: ghostwhite
+}
+</style>
+<script type="text/javascript" src="src/cuba.js"></script>
+<script type="text/javascript">
+
+var $ = function(id) { return cuba.grab( id ) }
+
+//if dom is ready go ahead!!!
+cuba.ready(function() {
+
+
+         $('run').Click( function( event ){
+
+                 cuba.stopPropagation( event ) 
+
+                 selectbymin(0,1,pads.length-1,function(i,j){
+
+                        var aux; 
+
+                        if( i == j) return;   
+
+                        if(toNumber(pads[i]) > toNumber(pads[j])) {
+      
+                              aux = pads[i]
+                              pads[i] = pads[j]
+                              pads[j] = aux
+                              
+                              draw(i,j) 
+                        }
+                 })                 
+         });
+
+  
+         pads = Array.prototype.slice.call( document.querySelectorAll( "#padx .box" ) )
+
+         cuba.each(pads, function( pad, index ){
+
+                   pad.style.left = (index * 150) + 'px';
+
+                   pad.setAttribute('id','box'+index)
+         })  
+
+         if(window.console) console.log(pads)
+})      
+
+
+function selectbymin(i,j,max,callback) {
+
+         var k = i, 
+             min = toNumber(pads[i]);
+
+         for(var a=j;a<=max;a++) {
+
+            if(toNumber(pads[a]) < min) {
+               min = toNumber(pads[a])
+               k = a
+            }
+         }  
+
+         callback(i,k) 
+
+         i++;
+
+         if(i<max) window.setTimeout(function(){
+                          selectbymin(i,j+1,max,callback)
+                   }, 1200);
+          else {
+               $('logger').fadeIn(0.5)
+               window.setTimeout(function(){
+                  $('logger').fadeOut(0.5)
+               }, 2000)
+          }  
+}
+
+function draw(i,j) {
+
+         move(pads[i]).set('left', cuba.getStyle(pads[j],'left')).end( move(pads[j]).set('left', cuba.getStyle(pads[i],'left')).end() )         
+}
+
+function toNumber(o) {
+
+     return parseInt(o.innerHTML)
+}
+</script>
+</head>
+<body>
+<h1>Select By Min Sort Visualization</h1>
+<div id="logger">End Sorting</div>
+<a href="#" id="run" class="minimal">execute</a> 
+
+<div id="padx">
+     <div class="box">9</div>
+     <div class="box">8</div>
+     <div class="box">7</div>
+     <div class="box">6</div>
+     <div class="box">5</div>
+     <div class="box">4</div>
+     <div class="box">3</div>
+</div>
+<pre><code>
+</code></pre>
+</body>
+</html>
+
